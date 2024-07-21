@@ -1,3 +1,6 @@
+using AspireMessaging.ApiService;
+using MassTransit;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire components.
@@ -5,6 +8,20 @@ builder.AddServiceDefaults();
 
 // Add services to the container.
 builder.Services.AddProblemDetails();
+
+builder.Services.AddMassTransit(x =>
+{
+    x.SetKebabCaseEndpointNameFormatter();
+    x.AddConsumer<HelloWorldMessageConsumer>();
+
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        var configuration = context.GetRequiredService<IConfiguration>();
+        var host = configuration.GetConnectionString("RabbitMQConnection");
+        cfg.Host(host);
+        cfg.ConfigureEndpoints(context);
+    });
+});
 
 var app = builder.Build();
 

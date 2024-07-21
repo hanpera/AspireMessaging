@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireMessaging.Web", "Aspi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireMessaging.Tests", "AspireMessaging.Tests\AspireMessaging.Tests.csproj", "{370267CD-70A4-48E9-9655-AEB53793F4FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireMessaging.Contracts", "AspireMessaging.Contracts\AspireMessaging.Contracts.csproj", "{A571AD35-CAB2-4445-B1F3-1D52891E5F2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{370267CD-70A4-48E9-9655-AEB53793F4FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{370267CD-70A4-48E9-9655-AEB53793F4FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{370267CD-70A4-48E9-9655-AEB53793F4FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A571AD35-CAB2-4445-B1F3-1D52891E5F2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A571AD35-CAB2-4445-B1F3-1D52891E5F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A571AD35-CAB2-4445-B1F3-1D52891E5F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A571AD35-CAB2-4445-B1F3-1D52891E5F2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AspireMessaging.Contracts\AspireMessaging.Contracts.csproj" />
     <ProjectReference Include="..\AspireMessaging.ServiceDefaults\AspireMessaging.ServiceDefaults.csproj" />
   </ItemGroup>
 

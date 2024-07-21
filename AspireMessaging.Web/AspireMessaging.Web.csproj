@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AspireMessaging.Contracts\AspireMessaging.Contracts.csproj" />
     <ProjectReference Include="..\AspireMessaging.ServiceDefaults\AspireMessaging.ServiceDefaults.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="8.0.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.3" />
   </ItemGroup>
 
 </Project>
