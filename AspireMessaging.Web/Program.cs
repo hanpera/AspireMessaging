@@ -1,5 +1,6 @@
 using AspireMessaging.Web;
 using AspireMessaging.Web.Components;
+using AspireMessaging.Web.Services;
 using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,14 +8,23 @@ var builder = WebApplication.CreateBuilder(args);
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
 builder.AddRedisOutputCache("cache");
+builder.AddAzureServiceBusClient("messaging");
 builder.Services.AddMassTransit(x =>
 {
     x.SetKebabCaseEndpointNameFormatter();
 
-    x.UsingRabbitMq((context, cfg) =>
+    //x.UsingRabbitMq((context, cfg) =>
+    //{
+    //    var configuration = context.GetRequiredService<IConfiguration>();
+    //    var host = configuration.GetConnectionString("RabbitMQConnection");
+    //    cfg.Host(host);
+    //    cfg.ConfigureEndpoints(context);
+    //});
+
+    x.UsingAzureServiceBus((context, cfg) =>
     {
         var configuration = context.GetRequiredService<IConfiguration>();
-        var host = configuration.GetConnectionString("RabbitMQConnection");
+        var host = configuration.GetConnectionString("messaging");
         cfg.Host(host);
         cfg.ConfigureEndpoints(context);
     });
@@ -22,7 +32,7 @@ builder.Services.AddMassTransit(x =>
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-
+builder.Services.AddSingleton<HelloService>();
 builder.Services.AddHttpClient<WeatherApiClient>(client =>
     {
         // This URL uses "https+http://" to indicate HTTPS is preferred over HTTP.

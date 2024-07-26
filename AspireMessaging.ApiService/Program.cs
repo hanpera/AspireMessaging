@@ -14,10 +14,18 @@ builder.Services.AddMassTransit(x =>
     x.SetKebabCaseEndpointNameFormatter();
     x.AddConsumer<HelloWorldMessageConsumer>();
 
-    x.UsingRabbitMq((context, cfg) =>
+    //x.UsingRabbitMq((context, cfg) =>
+    //{
+    //    var configuration = context.GetRequiredService<IConfiguration>();
+    //    var host = configuration.GetConnectionString("RabbitMQConnection");
+    //    cfg.Host(host);
+    //    cfg.ConfigureEndpoints(context);
+    //});
+
+    x.UsingAzureServiceBus((context, cfg) =>
     {
         var configuration = context.GetRequiredService<IConfiguration>();
-        var host = configuration.GetConnectionString("RabbitMQConnection");
+        var host = configuration.GetConnectionString("messaging");
         cfg.Host(host);
         cfg.ConfigureEndpoints(context);
     });

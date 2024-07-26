@@ -1,8 +1,10 @@
 ﻿@page "/"
+@using AspireMessaging.Web.Services
 
 @rendermode InteractiveServer
 
 @inject IBus Bus
+@inject HelloService HelloService;
 
 <PageTitle>Home</PageTitle>
 
@@ -15,6 +17,7 @@ Welcome to your new app.
 @code {
     private async Task DispatchMessage()
     {
+        var client = HelloService.Client;
         await Bus.Publish(new MessageContract
         {
             Message = "Hello, world!"
